@@ -27,6 +27,7 @@ quizForm.addEventListener("submit", async (event) => {
             quizForm.opt1.value = ''
             quizForm.opt2.value = ''
             quizForm.opt3.value = ''
+            quizForm.correct.value = ""
             displayData()
         }
     } catch (error) {
