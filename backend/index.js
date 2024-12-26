@@ -21,7 +21,6 @@ loginForm.addEventListener("submit", async (event) => {
     try {
         let userData = await getData()
         await userData.forEach((ele, i) => {
-            console.log(email)
             if (ele.email == email) {
                 if (ele.password == password) {
                     alert("Login Success, you are redirecting to quiz page")
