@@ -26,6 +26,7 @@ quizForm.addEventListener("submit", async (event) => {
             quizForm.opt1.value = ''
             quizForm.opt2.value = ''
             quizForm.opt3.value = ''
+            displayData()
         }
     } catch (error) {
         alert("Could not create quiz, please try again later")
@@ -57,7 +58,7 @@ async function displayData() {
             <p>Option 3: ${ele.option3}</p>
             <p>Correct Option: ${ele.correctOption}</p>
             <button type="button" onclick="review(this)">Review</button>
-            <button type="button" onclick="delete(this)">Delete</button>
+            <button type="button" onclick="deleteQuiz(this)">Delete</button>
         </div>`
         } else {
             quizContainer.innerHTML += `<div class="question" id="${ele.id}">
@@ -67,7 +68,7 @@ async function displayData() {
             <p>Option 3: ${ele.option3}</p>
             <p>Correct Option: ${ele.correctOption}</p>
             <button type="button" onclick="review(this)">Review</button>
-            <button type="button" onclick="delete(this)">Delete</button>
+            <button type="button" onclick="deleteQuiz(this)">Delete</button>
         </div>`
         }
         })
@@ -78,7 +79,7 @@ async function displayData() {
 
     window.review = async (buttonEl) => {
         console.log("reviewed")
-        let elId = buttonEl.parentElement.id;
+        const elId = buttonEl.parentElement.id;
         try {
             let res = await fetch(`${quizEndpoint}/${elId}`, {
                 method:"PATCH",
@@ -97,15 +98,16 @@ async function displayData() {
         }
     }
 
-    window.delete = async (buttonEl) => {
+    window.deleteQuiz = async (buttonEl) => {
         console.log("deleted")
-        let elId = buttonEl.parentElement.id;
+        const elId = buttonEl.parentElement.id;
         try {
             let res = await fetch(`${quizEndpoint}/${elId}`, {
                 method:"DELETE",
             })
             if(res.ok){
                 alert("Successfully Deleted!")
+                displayData()
             }
         } catch (error) {
             alert("Could not delete, please try again later")
