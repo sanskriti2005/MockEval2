@@ -24,7 +24,7 @@ loginForm.addEventListener("submit", async (event) => {
             console.log(email)
             if (ele.email == email) {
                 if (ele.password == password) {
-                    alert("Login Successful!")
+                    alert("Login Success, you are redirecting to quiz page")
                     window.location.href = "quiz.html"
                 } else {
                     alert("Wrong Password")

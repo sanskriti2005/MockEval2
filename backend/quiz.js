@@ -1,6 +1,7 @@
 import { quizEndpoint } from "./endpoint.js";
-import { endpoint } from "./endpoint.js";
 
+
+// QUIZ FORM
 const quizForm = document.querySelector("#quiz-form")
 quizForm.addEventListener("submit", async (event) => {
     event.preventDefault()
@@ -34,6 +35,7 @@ quizForm.addEventListener("submit", async (event) => {
     }
 })
 
+// GET DATA
 async function getData() {
     try {
         let res = await fetch(quizEndpoint)
